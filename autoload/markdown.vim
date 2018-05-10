@@ -9,7 +9,11 @@ let s:css_path = s:script_path . '/css/'
 let s:Pandoc = {'name': 'Pandoc'}
 let s:output_path = tempname() . '.html'
 
-function! s:Pandoc.generate(css)
+function! s:Pandoc.generate(css, restart)
+  if a:restart > 0
+    echo a:restart
+    call s:LiveServer.stop()
+  endif
   let input_path = expand('%:p')
   let filename = expand('%:r')
   let stylesheet = s:css_path . a:css
@@ -56,8 +60,8 @@ endfunction
 
 " Interface
 
-function! markdown#generate(css) abort
-  call s:Pandoc.generate(a:css)
+function! markdown#generate(css, restart) abort
+  call s:Pandoc.generate(a:css, a:restart)
 endfunction
 
 function! markdown#server_start(file) abort

@@ -14,10 +14,10 @@ function! MarkdownPreview(css)
 
   augroup nvim_markdown_preview
     autocmd!
-    autocmd BufWritePost *.md,*.markdown call markdown#generate(s:stylesheet)
+    autocmd BufWritePost *.md,*.markdown call markdown#generate(s:stylesheet, 0)
   augroup END
 
-  call markdown#generate(s:stylesheet)
+  call markdown#generate(s:stylesheet, 1)
 endfunction
 
 command -nargs=? -buffer MarkdownPreview call MarkdownPreview(<q-args>)
