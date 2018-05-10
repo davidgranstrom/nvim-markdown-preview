@@ -11,9 +11,9 @@ let s:output_path = tempname() . '.html'
 
 function! s:Pandoc.generate(css, restart)
   if a:restart > 0
-    echo a:restart
     call s:LiveServer.stop()
   endif
+
   let input_path = expand('%:p')
   let filename = expand('%:r')
   let stylesheet = s:css_path . a:css
