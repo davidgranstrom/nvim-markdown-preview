@@ -22,5 +22,5 @@ function! MarkdownPreview(css)
   call markdown#generate(s:stylesheet, 1)
 endfunction
 
-command -nargs=? -buffer MarkdownPreview call MarkdownPreview(<q-args>)
-noremap <buffer><silent> <Plug>(nvim-markdown-preview) :<c-u>call MarkdownPreview<cr>
+command -nargs=? -buffer MarkdownPreview silent call MarkdownPreview(<q-args>)
+noremap <buffer><silent> <Plug>(nvim-markdown-preview) :<c-u>MarkdownPreview<cr>
