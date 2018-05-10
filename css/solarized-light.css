@@ -1,9 +1,23 @@
 <style>
 /*
-Modified to work with pandoc html output
-David Granström https://davidgranstrom.com
+ https://github.com/alphapapa/solarized-everything-css
 
-License MIT © Sindre Sorhus https://sindresorhus.com/
+ Modified with styling from ./github.css
+
+ License GPL3
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 @font-face {
   font-family: octicons-link;
@@ -711,5 +725,59 @@ body .task-list-item input {
 
 body hr {
   border-bottom-color: #eee;
+}
+
+/* solarized-generic-light.css */
+* {
+  border-color: #839496 !important;
+}
+a {
+  color: #268bd2 !important;
+}
+a:visited {
+  color: #6c71c4 !important;
+}
+body {
+  background-color: #fdf6e3 !important;
+  color: #657b83 !important;
+}
+html {
+  background-color: #fdf6e3 !important;
+}
+input,
+textarea {
+  background-color: #eee8d5 !important;
+  color: #657b83 !important;
+}
+blockquote,
+pre {
+  background-color: #eee8d5 !important;
+  color: #657b83 !important;
+}
+* {
+  border-color: #839496 !important;
+}
+a {
+  color: #268bd2 !important;
+}
+a:visited {
+  color: #6c71c4 !important;
+}
+body {
+  background-color: #fdf6e3 !important;
+  color: #657b83 !important;
+}
+html {
+  background-color: #fdf6e3 !important;
+}
+input,
+textarea {
+  background-color: #eee8d5 !important;
+  color: #657b83 !important;
+}
+blockquote,
+pre {
+  background-color: #eee8d5 !important;
+  color: #657b83 !important;
 }
 </style>
