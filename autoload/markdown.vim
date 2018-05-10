@@ -9,11 +9,7 @@ let s:css_path = s:script_path . '/css/'
 let s:Pandoc = {'name': 'Pandoc'}
 let s:output_path = tempname() . '.html'
 
-function! s:Pandoc.generate(css, restart)
-  if a:restart > 0
-    call s:LiveServer.stop()
-  endif
-
+function! s:Pandoc.generate(css, restart) abort
   let input_path = expand('%:p')
   let filename = expand('%:r')
   let stylesheet = s:css_path . a:css
@@ -22,7 +18,13 @@ function! s:Pandoc.generate(css, restart)
   let self.server_index_path = s:output_path
   let self.server_root = fnamemodify(input_path, ':h')
 
-  call jobstart(['bash', '-c', 'pandoc ' . input_path . ' -o ' . s:output_path . flags ], self)
+  if filereadable(input_path)
+    if a:restart > 0
+      call s:LiveServer.stop()
+    endif
+
+    call jobstart(['bash', '-c', 'pandoc ' . input_path . ' -o ' . s:output_path . flags ], self)
+  endif
 endfunction
 
 function! s:Pandoc.on_exit(job_id, data, event)
