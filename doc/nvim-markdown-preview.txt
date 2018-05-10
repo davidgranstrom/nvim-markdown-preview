@@ -1,0 +1,54 @@
+*nvim-markdown-preview.txt*              Preview markdown files in the browser
+
+Author:  David Granström <https://davidgranstrom.com/>
+License: GPL3
+
+INTRODUCTION                                           *nvim-markdown-preview*
+
+Markdown preview in the browser using pandoc (https://pandoc.org/) and
+live-server (https://github.com/tapio/live-server) through Neovim's
+|job-control| API.
+
+
+USAGE
+
+Open a markdown file in vim and run |:MarkdownPreview|. The preview opens in a
+new browser tab which will be reloaded whenever you |:write| the buffer. If you
+accidentally close your browser tab or want to change the theme just run the
+command again.
+
+COMMANDS                                      *nvim-markdown-preview-commands*
+
+There is only one command which is made avaiable when editing a file with a
+.md or .markdown extension.
+
+                                                            *:MarkdownPreview*
+:MarkdownPreview [theme]    Starts the browser preview of the current file.
+                            Optional argument to select a theme.
+
+                            The available themes are currently:
+                            * github
+                            * solarized-light
+                            * solarized-dark
+
+MAPPINGS                                      *nvim-markdown-preview-mappings*
+
+There are no default mappings but you can create your own using the provided
+|<Plug>| mapping.
+
+<plug>(nvim-markdown-preview)
+
+In your vimrc
+>
+  nmap <cr> <plug>(nvim-markdown-preview)
+
+CUSTOMIZATION                            *nvim-markdown-preview-customization*
+
+Set this variable in your vimrc to specify a default theme for the preview.
+The default is the github theme.
+
+>
+  let g:nvim_markdown_preview_theme = 'solarized-light'
+<
+
+ vim:tw=78:et:ft=help:norl:
