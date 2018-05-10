@@ -3,15 +3,17 @@
 " Description: Preview markdown files in the browser
 " License: GPL3
 
-let s:script_path = expand('%:p:h:h')
+let s:script_path = expand('<sfile>:p:h:h')
 let s:css_path = s:script_path . '/css/'
 let s:html_output_path = '/tmp/markdown-preview.html'
 
 let s:Pandoc = {'name': 'Pandoc'}
 
-function! s:Pandoc.generate(css) abort
+function! s:Pandoc.generate(css)
   let l:path = expand('%:p')
-  let l:flags = ' --standalone --metadata pagetitle=markdown-preview' . ' --include-in-header=' . s:css_path . a:css
+  let l:stylesheet = s:css_path . a:css
+  let l:flags = ' --standalone --metadata pagetitle=markdown-preview' . ' --include-in-header=' . l:stylesheet
+
   call jobstart(['bash', '-c', 'pandoc ' . l:path . ' -o ' . s:html_output_path . l:flags ], self)
 endfunction
 
