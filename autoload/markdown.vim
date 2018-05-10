@@ -15,7 +15,7 @@ function! s:Pandoc.generate(css) abort
   call jobstart(['bash', '-c', 'pandoc ' . l:path . ' -o ' . s:html_output_path . l:flags ], self)
 endfunction
 
-function! s:Pandoc.on_exit()
+function! s:Pandoc.on_exit(job_id, data, event)
   call s:LiveServer.start(s:html_output_path)
 endfunction
 
