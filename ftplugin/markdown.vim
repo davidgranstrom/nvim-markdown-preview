@@ -10,7 +10,9 @@ endif
 let b:did_nvim_markdown_preview = 1
 
 function! MarkdownPreview(css)
-  let s:stylesheet = a:css != '' ? a:css . '.css' : 'github.css'
+  let default_theme = get(g:, 'nvim_markdown_preview_theme', 'github')
+  let s:stylesheet = a:css != '' ? a:css : default_theme
+  let s:stylesheet = s:stylesheet . '.css'
 
   augroup nvim_markdown_preview
     autocmd!
