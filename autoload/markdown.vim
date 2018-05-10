@@ -7,18 +7,18 @@ let s:script_path = expand('<sfile>:p:h:h')
 let s:css_path = s:script_path . '/css/'
 
 let s:Pandoc = {'name': 'Pandoc'}
+let s:output_path = tempname() . '.html'
 
 function! s:Pandoc.generate(css)
   let input_path = expand('%:p')
   let filename = expand('%:r')
-  let output_path = tempname() . '.html'
   let stylesheet = s:css_path . a:css
   let flags = ' --standalone -t html --metadata pagetitle=' . filename . ' --include-in-header=' . l:stylesheet
 
-  let self.server_index_path = output_path
+  let self.server_index_path = s:output_path
   let self.server_root = fnamemodify(input_path, ':h')
 
-  call jobstart(['bash', '-c', 'pandoc ' . input_path . ' -o ' . output_path . flags ], self)
+  call jobstart(['bash', '-c', 'pandoc ' . input_path . ' -o ' . s:output_path . flags ], self)
 endfunction
 
 function! s:Pandoc.on_exit(job_id, data, event)
