@@ -1,25 +1,24 @@
-" File: ftplugin/markdown/markdown.vim
+" File: ftplugin/markdown.vim
 " Author: David Granström
 " Description: Preview markdown files in the browser
-" License: GPLv3
+" License: GPL3
 
-if exists("b:did_markdown_preview")
+if exists('b:did_nvim_markdown_preview')
   finish
 endif
 
-let b:did_markdown_preview = 1
+let b:did_nvim_markdown_preview = 1
 
-function! MarkdownPreview()
-  augroup markdown_preview
+function! MarkdownPreview(css)
+  let s:stylesheet = a:css != '' ? a:css . '.css' : 'github.css'
+
+  augroup nvim_markdown_preview
     autocmd!
-    autocmd BufWritePost *.md,*.markdown call markdown#generate()
+    autocmd BufWritePost *.md,*.markdown call markdown#generate(s:stylesheet)
   augroup END
 
-  call markdown#generate()
+  call markdown#generate(s:stylesheet)
 endfunction
 
-command -buffer MarkdownPreview call MarkdownPreview()
-noremap <buffer><silent> <Plug>(markdown-preview) :<c-u>call MarkdownPreview<cr>
-
-command -buffer MarkdownPreviewStop call markdown#server_stop()
-noremap <buffer><silent> <Plug>(markdown-preview-stop) :<c-u>call markdown#server_stop()<cr>
+command -nargs=? -buffer MarkdownPreview call MarkdownPreview(<q-args>)
+noremap <buffer><silent> <Plug>(nvim-markdown-preview) :<c-u>call MarkdownPreview<cr>
