@@ -30,11 +30,7 @@ or
 
 ## Screenshots
 
-<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); grid-gap: 0px;">
-  <img src=./screenshots/github.jpg />
-  <img src=./screenshots/solarized-light.jpg />
-  <img src=./screenshots/solarized-dark.jpg />
-</section>
+![](./screenshots/grid.png)
 
 ## Installation
 
