@@ -5,20 +5,24 @@
 
 let s:script_path = expand('<sfile>:p:h:h')
 let s:css_path = s:script_path . '/css/'
-let s:html_output_path = '/tmp/markdown-preview.html'
 
 let s:Pandoc = {'name': 'Pandoc'}
 
 function! s:Pandoc.generate(css)
-  let l:path = expand('%:p')
-  let l:stylesheet = s:css_path . a:css
-  let l:flags = ' --standalone --metadata pagetitle=markdown-preview' . ' --include-in-header=' . l:stylesheet
+  let input_path = expand('%:p')
+  let filename = expand('%:r')
+  let output_path = tempname() . '.html'
+  let stylesheet = s:css_path . a:css
+  let flags = ' --standalone -t html --metadata pagetitle=' . filename . ' --include-in-header=' . l:stylesheet
 
-  call jobstart(['bash', '-c', 'pandoc ' . l:path . ' -o ' . s:html_output_path . l:flags ], self)
+  let self.server_index_path = output_path
+  let self.server_root = fnamemodify(input_path, ':h')
+
+  call jobstart(['bash', '-c', 'pandoc ' . input_path . ' -o ' . output_path . flags ], self)
 endfunction
 
 function! s:Pandoc.on_exit(job_id, data, event)
-  call s:LiveServer.start(s:html_output_path)
+  call s:LiveServer.start(self.server_root, self.server_index_path)
 endfunction
 
 function! s:Pandoc.on_stderr(job_id, data, event)
@@ -28,9 +32,13 @@ endfunction
 
 let s:LiveServer = {'name': 'LiveServer'}
 
-function! s:LiveServer.start(file)
+function! s:LiveServer.start(root, index_path)
   if !exists('self.pid')
-    let self.pid = jobstart(['bash', '-c', 'live-server ' . a:file ], self)
+    let mount_path = fnamemodify(a:index_path, ':h')
+    let index = fnamemodify(a:index_path, ':t')
+    let flags = ' --quiet ' . '--mount=' . '/:' . mount_path . ' --open=' . index
+
+    let self.pid = jobstart(['bash', '-c', 'live-server' . flags ], self)
   endif
 endfunction
 
@@ -44,6 +52,7 @@ endfunction
 function! s:LiveServer.on_stderr(job_id, data, event)
   echoerr printf('[%s] %s', self.name, join(a:data))
 endfunction
+
 
 " Interface
 
