@@ -14,6 +14,20 @@ function! MarkdownPreview(css)
   let s:stylesheet = a:css != '' ? a:css : default_theme
   let s:stylesheet = s:stylesheet . '.css'
 
+  try
+    let error_msg = "Can't find %s in $PATH"
+
+    if !executable('pandoc')
+      throw printf(error_msg, 'pandoc')
+    endif
+
+    if !executable('live-server')
+      throw printf(error_msg, 'live-server')
+    endif
+  catch
+      echoerr v:exception
+  endtry
+
   augroup nvim_markdown_preview
     autocmd!
     autocmd BufWritePost *.md,*.markdown call markdown#generate(s:stylesheet, 0)
