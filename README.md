@@ -2,23 +2,9 @@
 
 Markdown preview in the browser using [pandoc](https://pandoc.org/) and [live-server](https://github.com/tapio/live-server) through Neovim's [job-control API](https://neovim.io/doc/user/job_control.html).
 
-## Requirements
+## Usage
 
-* pandoc
-* live-server (node.js)
-
-`pandoc` and `live-server` executables should be installed and accessible in your `$PATH`. Please see the links above on how to install these programs on your system.
-
-On macOS it should be something like:
-
-`brew install pandoc`
-
-`npm install -g live-server`
-
-or
-
-`yarn global add live-server` if you prefer `yarn`.
-
+Open a markdown file in vim and run `:MarkdownPreview`. The preview opens in a new browser tab which will be reloaded whenever you `:write` the buffer. If you accidentally close your browser tab or want to change the theme just run the command again. The file needs to be written to disk before you can start the preview.
 
 ## Features
 
@@ -28,41 +14,38 @@ or
 * Auto-reloads browser tab on save
 * Serves assets from the current working directory (embed pictures in your markdown etc.)
 
-## Screenshots
+## Requirements
 
-![](./screenshots/grid.png)
+* `pandoc`
+* `live-server` (Node.js)
 
+`pandoc` and `live-server` executables should be installed and accessible in your `$PATH`. Please see the links in the description on how to install these programs on your system.
+
+On macOS it could look something like:
+
+```
+$ brew install pandoc
+$ npm install -g live-server
+
+(or if you prefer yarn)
+
+$ yarn global add live-server
+```
 ## Installation
 
-If you are using [vim-plug](https://github.com/junegunn/vim-plug) put this in your vimrc
+If you are using [vim-plug](https://github.com/junegunn/vim-plug)
 
 `Plug 'davidgranstrom/nvim-markdown-preview'`
 
 source the file (or restart vim) and then run `:PlugInstall`
 
-## Usage
+## Documentation
 
-Open a markdown file in vim and run `:MarkdownPreview`. The preview opens in a new browser tab which will be reloaded whenever you `:write` the buffer. If you accidentally close your browser tab or want to change the theme just run the command again.
+Take a look at `:help nvim-markdown-preview` for documentation and examples.
 
-## Commands and mappings
+## Screenshots
 
-`:MarkdownPreview <theme>`
-
-Example
-
-`:MarkdownPreview solarized-dark`
-
-Mapping example
-
-`nmap <cr> <plug>(nvim-markdown-preview)`
-
-## Variables
-
-`g:nvim_markdown_preview_theme`
-
-If you want another theme to act as the default theme e.g. `solarized-light` you can set this variable in your vimrc.
-
-`let g:nvim_markdown_preview_theme = 'solarized-light'`
+![](./screenshots/grid.png)
 
 ## Q/A
 
@@ -82,10 +65,6 @@ Or the `<Plug>` mapping to bind it to the key of your choice
 ```
 nmap <cr> <plug>(nvim-markdown-preview)
 ```
-
-**Q:** There are already so many vim markdown preview plugins, why another one?
-
-**A:** The ones I've tried always felt a bit too fragile or heavy for my taste. Plus, it was fun to learn about Neovim's excellent job-control API.
 
 ## TODO
 
