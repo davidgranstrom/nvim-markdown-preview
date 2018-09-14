@@ -32,7 +32,10 @@ function! s:Pandoc.on_exit(job_id, data, event)
 endfunction
 
 function! s:Pandoc.on_stderr(job_id, data, event)
-  echoerr printf('[%s] %s', self.name, join(a:data))
+  let msg = join(a:data)
+  if !empty(msg)
+    echoerr printf('[%s] %s', self.name, join(a:data))
+  endif
 endfunction
 
 
