@@ -23,7 +23,7 @@ function! s:Pandoc.generate(css, restart) abort
       call s:LiveServer.stop()
     endif
 
-    call jobstart(['bash', '-c', 'pandoc ' . input_path . ' -o ' . s:output_path . flags ], self)
+    call jobstart('pandoc ' . input_path . ' -o ' . s:output_path . flags, self)
   endif
 endfunction
 
@@ -44,7 +44,7 @@ function! s:LiveServer.start(root, index_path)
     let index = fnamemodify(a:index_path, ':t')
     let flags = ' --quiet ' . '--mount=' . '/:' . mount_path . ' --open=' . index
 
-    let self.pid = jobstart(['bash', '-c', 'live-server' . flags ], self)
+    let self.pid = jobstart('live-server' . flags, self)
   endif
 endfunction
 
