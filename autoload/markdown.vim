@@ -13,7 +13,6 @@ function! s:Pandoc.generate(css, restart) abort
   let input_path = expand('%:p')
   let filename = expand('%:r')
   let stylesheet = s:css_path . a:css
-  let flags = ' --standalone -t html --metadata pagetitle=' . filename . ' --include-in-header=' . l:stylesheet
 
   let self.server_index_path = s:output_path
   let self.server_root = fnamemodify(input_path, ':h')
@@ -22,8 +21,18 @@ function! s:Pandoc.generate(css, restart) abort
     if a:restart > 0
       call s:LiveServer.stop()
     endif
-
-    call jobstart('pandoc ' . input_path . ' -o ' . s:output_path . flags, self)
+    call jobstart([
+          \ 'pandoc',
+          \ input_path,
+          \ '-o', s:output_path,
+          \ '--standalone',
+          \ '-t', 'html',
+          \ '--metadata',
+          \ 'pagetitle='.filename,
+          \ '--include-in-header='.l:stylesheet,
+          \ ],
+          \ self
+          \ )
   endif
 endfunction
 
@@ -45,9 +54,14 @@ function! s:LiveServer.start(root, index_path)
   if !exists('self.pid')
     let mount_path = fnamemodify(a:index_path, ':h')
     let index = fnamemodify(a:index_path, ':t')
-    let flags = ' --quiet ' . '--mount=' . '/:' . mount_path . ' --open=' . index
-
-    let self.pid = jobstart('live-server' . flags, self)
+    let self.pid = jobstart([
+          \ 'live-server',
+          \ '--quiet',
+          \ '--mount='.'/:'.mount_path,
+          \ '--open='.index,
+          \ ],
+          \ self,
+          \ )
   endif
 endfunction
 
