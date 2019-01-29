@@ -6,10 +6,9 @@
 if exists('b:did_nvim_markdown_preview')
   finish
 endif
-
 let b:did_nvim_markdown_preview = 1
 
-function! MarkdownPreview(css)
+function! s:markdown_preview(css)
   let default_theme = get(g:, 'nvim_markdown_preview_theme', 'github')
   let s:stylesheet = a:css != '' ? a:css : default_theme
   let s:stylesheet = s:stylesheet . '.css'
@@ -36,5 +35,5 @@ function! MarkdownPreview(css)
   call markdown#generate(s:stylesheet, 1)
 endfunction
 
-command -nargs=? -buffer MarkdownPreview silent call MarkdownPreview(<q-args>)
+command -nargs=? -buffer MarkdownPreview silent call <SID>markdown_preview(<q-args>)
 noremap <buffer><silent> <Plug>(nvim-markdown-preview) :<c-u>MarkdownPreview<cr>
