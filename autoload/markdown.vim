@@ -48,7 +48,6 @@ function! s:Pandoc.on_stderr(job_id, data, event)
   endif
 endfunction
 
-
 let s:LiveServer = {'name': 'LiveServer'}
 
 function! s:LiveServer.start(root, index_path)
@@ -74,9 +73,11 @@ function! s:LiveServer.stop()
 endfunction
 
 function! s:LiveServer.on_stderr(job_id, data, event)
-  echoerr printf('[%s] %s', self.name, join(a:data))
+  let msg = join(a:data)
+  if !empty(msg)
+    echoerr printf('[%s] %s', self.name, msg)
+  endif
 endfunction
-
 
 " Interface
 
