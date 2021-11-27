@@ -13,31 +13,65 @@ Open a markdown file in vim and run `:MarkdownPreview`. The preview opens in a n
 * Custom themes (`github`, `solarized-dark`, `solarized-light`)
 * Auto-reloads browser tab on save
 * Serves assets from the current working directory (embed pictures in your markdown etc.)
+* Uses [pandoc markdown](https://pandoc.org/MANUAL.html#pandocs-markdown)
+* [KaTeX](https://katex.org/) for formatting LaTeX math
 
 ## Requirements
 
 * `pandoc`
 * `live-server` (Node.js)
 
-`pandoc` and `live-server` executables should be installed and accessible in your `$PATH`. Please see the links in the description on how to install these programs on your system.
+`pandoc` and `live-server` executables should be installed and accessible in your `$PATH`.
+### Pandoc
 
-On macOS it could look something like:
+Pandoc should be available in most linux distributions and on macOS via brew and Windows via chocolatey.
+
+On [macOS](https://pandoc.org/installing.html#macos) it could look something like:
 
 ```
-$ brew install pandoc
-$ npm install -g live-server
-
-(or if you prefer yarn)
-
-$ yarn global add live-server
+brew install pandoc
 ```
+
+For [Linux](https://pandoc.org/installing.html#linux):
+
+Ubuntu
+```
+sudo apt install pandoc
+```
+
+Fedora
+```
+sudo dnf install pandoc
+```
+
+For [Windows](https://pandoc.org/installing.html#windows):
+
+Either down the executable or via Chocolatey
+```
+choco install pandoc
+```
+
+For other systems please see the links in the description on how to install.
+
+### live-server
+
+Assuming you have [Node.js](https://nodejs.org/en/download/) installed:
+```
+npm install -g live-server
+```
+
+or if you prefer yarn
+```
+yarn global add live-server
+```
+
 ## Installation
 
 If you are using [vim-plug](https://github.com/junegunn/vim-plug)
 
 `Plug 'davidgranstrom/nvim-markdown-preview'`
 
-source the file (or restart vim) and then run `:PlugInstall`
+source the file (`:source %`) (or restart vim) and then run `:PlugInstall`
 
 ## Documentation
 
@@ -47,7 +81,7 @@ Take a look at `:help nvim-markdown-preview` for documentation and examples.
 
 ![](./screenshots/grid.png)
 
-## Q/A
+## Q & A
 
 **Q:** Why doesn't the preview update in real-time while I type in vim?
 
@@ -71,6 +105,8 @@ nmap <cr> <plug>(nvim-markdown-preview)
 The markdown file must be written to disk first. It should be possible to use Pandoc `stdin` and pipe the buffer content using `jobsend()` instead.
 
 ## License
+
+GPL v3
 
 ```
 nvim-markdown-preview
