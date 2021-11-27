@@ -31,7 +31,7 @@ function! s:Pandoc.generate(css, restart) abort
           \ '--metadata',
           \ 'pagetitle='.filename,
           \ '--include-in-header='.l:stylesheet,
-          \ '--katex'
+          \ '--katex',
           \ ],
           \ self
           \ )
