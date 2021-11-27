@@ -23,7 +23,7 @@ function! s:Pandoc.generate(css, restart) abort
     endif
     call jobstart([
           \ 'pandoc',
-          \ '-f', 'gfm',
+          \ '-f', 'markdown',
           \ input_path,
           \ '-o', s:output_path,
           \ '--standalone',
