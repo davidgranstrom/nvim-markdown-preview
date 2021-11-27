@@ -28,10 +28,10 @@ function! s:Pandoc.generate(css, restart) abort
           \ '-o', s:output_path,
           \ '--standalone',
           \ '-t', 'html',
+          \ '--katex',
           \ '--metadata',
           \ 'pagetitle='.filename,
           \ '--include-in-header='.l:stylesheet,
-          \ '--katex',
           \ ],
           \ self
           \ )
