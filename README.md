@@ -15,6 +15,7 @@ Open a markdown file in vim and run `:MarkdownPreview`. The preview opens in a n
 * Serves assets from the current working directory (embed pictures in your markdown etc.)
 * Uses [pandoc markdown](https://pandoc.org/MANUAL.html#pandocs-markdown)
 * [KaTeX](https://katex.org/) for formatting LaTeX math
+* Syntax highlighting from the [Kate Editor themes](https://github.com/KDE/syntax-highlighting#color-theme-files)
 
 ## Requirements
 
