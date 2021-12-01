@@ -11,7 +11,6 @@ let b:did_nvim_markdown_preview = 1
 function! s:markdown_preview(theme)
   let default_theme = get(g:, 'nvim_markdown_preview_theme', 'github')
   let s:stylesheet = a:theme != '' ? a:theme : default_theme
-  " let s:stylesheet = s:stylesheet . '.css'
 
   try
     let error_msg = "Can't find %s in $PATH"
