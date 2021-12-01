@@ -13,7 +13,8 @@ Open a markdown file in vim and run `:MarkdownPreview`. The preview opens in a n
 * Custom themes (`github`, `solarized-dark`, `solarized-light`)
 * Auto-reloads browser tab on save
 * Serves assets from the current working directory (embed pictures in your markdown etc.)
-* Uses [pandoc markdown](https://pandoc.org/MANUAL.html#pandocs-markdown)
+* Custom markdown input formats
+  - [pandoc markdown](https://pandoc.org/MANUAL.html#pandocs-markdown)
 * [KaTeX](https://katex.org/) for formatting LaTeX math
 * Syntax highlighting from the [Kate Editor themes](https://github.com/KDE/syntax-highlighting#color-theme-files)
 
@@ -23,11 +24,12 @@ Open a markdown file in vim and run `:MarkdownPreview`. The preview opens in a n
 * `live-server` (Node.js)
 
 `pandoc` and `live-server` executables should be installed and accessible in your `$PATH`.
+
 ### Pandoc
 
 Pandoc should be available in most linux distributions and on macOS via brew and Windows via chocolatey.
 
-On [macOS](https://pandoc.org/installing.html#macos) it could look something like:
+On [macOS](https://pandoc.org/installing.html#macos) using Homebrew:
 
 ```
 brew install pandoc
@@ -35,19 +37,14 @@ brew install pandoc
 
 For [Linux](https://pandoc.org/installing.html#linux):
 
-Ubuntu
-```
-sudo apt install pandoc
-```
+* Ubuntu `sudo apt install pandoc`
 
-Fedora
-```
-sudo dnf install pandoc
-```
+* Fedora `sudo dnf install pandoc`
 
 For [Windows](https://pandoc.org/installing.html#windows):
 
-Either down the executable or via Chocolatey
+Either download the executable or get it with Chocolatey
+
 ```
 choco install pandoc
 ```
@@ -76,7 +73,37 @@ source the file (`:source %`) (or restart vim) and then run `:PlugInstall`
 
 ## Documentation
 
-Take a look at `:help nvim-markdown-preview` for documentation and examples.
+### Usage
+
+There is only a single command:
+
+```vim
+:MarkdownPreview [theme]    Starts the browser preview of the current file.
+                            Optional argument to select a theme.
+
+                            The available themes are currently:
+                            * github
+                            * solarized-light
+                            * solarized-dark
+
+```
+
+### Customization
+
+Set this variable in your init.vim to specify a default theme for the preview.
+The default is the github theme.
+
+```vim
+let g:nvim_markdown_preview_theme = 'solarized-light'
+```
+Set this variable to specificy the pandoc input format (--format/-f) option.
+The default is `gfm` (github flavoured markdown).
+
+```vim
+let g:nvim_markdown_preview_format = 'markdown'
+```
+
+Take a look at `:help nvim-markdown-preview` for complete documentation and examples.
 
 ## Screenshots
 
