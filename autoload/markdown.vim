@@ -15,6 +15,7 @@ function! s:Pandoc.generate(theme, restart) abort
   let filename = expand('%:r')
   let stylesheet = s:css_path . a:theme . '.css'
   let highlight = s:highlight_path . a:theme . '.theme'
+  let input_format = get(g:, 'nvim_markdown_preview_format', 'gfm')
 
   let self.server_index_path = s:output_path
   let self.server_root = fnamemodify(input_path, ':h')
@@ -25,7 +26,7 @@ function! s:Pandoc.generate(theme, restart) abort
     endif
     call jobstart([
           \ 'pandoc',
-          \ '-f', 'markdown',
+          \ '-f', input_format,
           \ input_path,
           \ '-o', s:output_path,
           \ '--standalone',
