@@ -8,10 +8,9 @@ if exists('b:did_nvim_markdown_preview')
 endif
 let b:did_nvim_markdown_preview = 1
 
-function! s:markdown_preview(css)
+function! s:markdown_preview(theme)
   let default_theme = get(g:, 'nvim_markdown_preview_theme', 'github')
-  let s:stylesheet = a:css != '' ? a:css : default_theme
-  let s:stylesheet = s:stylesheet . '.css'
+  let s:stylesheet = a:theme != '' ? a:theme : default_theme
 
   try
     let error_msg = "Can't find %s in $PATH"

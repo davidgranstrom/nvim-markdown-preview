@@ -51,4 +51,11 @@ The default is the github theme.
   let g:nvim_markdown_preview_theme = 'solarized-light'
 <
 
+Set this variable to specificy the pandoc input format (--format/-f) option.
+The default is `gfm` (github flavoured markdown).
+
+>
+  let g:nvim_markdown_preview_format = 'markdown'
+<
+
  vim:tw=78:et:ft=help:norl:

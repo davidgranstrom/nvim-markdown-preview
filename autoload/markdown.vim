@@ -5,14 +5,17 @@
 
 let s:script_path = expand('<sfile>:p:h:h')
 let s:css_path = s:script_path . '/css/'
+let s:highlight_path = s:script_path . '/highlight/'
 
 let s:Pandoc = {'name': 'Pandoc'}
 let s:output_path = tempname() . '.html'
 
-function! s:Pandoc.generate(css, restart) abort
+function! s:Pandoc.generate(theme, restart) abort
   let input_path = expand('%:p')
   let filename = expand('%:r')
-  let stylesheet = s:css_path . a:css
+  let stylesheet = s:css_path . a:theme . '.css'
+  let highlight = s:highlight_path . a:theme . '.theme'
+  let input_format = get(g:, 'nvim_markdown_preview_format', 'gfm')
 
   let self.server_index_path = s:output_path
   let self.server_root = fnamemodify(input_path, ':h')
@@ -23,11 +26,13 @@ function! s:Pandoc.generate(css, restart) abort
     endif
     call jobstart([
           \ 'pandoc',
-          \ '-f', 'gfm',
+          \ '-f', input_format,
           \ input_path,
           \ '-o', s:output_path,
           \ '--standalone',
           \ '-t', 'html',
+          \ '--katex',
+          \ '--highlight-style='.l:highlight,
           \ '--metadata',
           \ 'pagetitle='.filename,
           \ '--include-in-header='.l:stylesheet,
@@ -81,8 +86,8 @@ endfunction
 
 " Interface
 
-function! markdown#generate(css, restart) abort
-  call s:Pandoc.generate(a:css, a:restart)
+function! markdown#generate(theme, restart) abort
+  call s:Pandoc.generate(a:theme, a:restart)
 endfunction
 
 function! markdown#server_start(file) abort
