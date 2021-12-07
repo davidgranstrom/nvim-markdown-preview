@@ -27,7 +27,7 @@ Open a markdown file in vim and run `:MarkdownPreview`. The preview opens in a n
 
 ### Pandoc
 
-Pandoc should be available in most linux distributions and on macOS via brew and Windows via chocolatey.
+Pandoc should be available in most Linux distributions and on macOS via brew and Windows via chocolatey.
 
 On [macOS](https://pandoc.org/installing.html#macos) using Homebrew:
 
@@ -91,13 +91,13 @@ There is only a single command:
 ### Customization
 
 Set this variable in your init.vim to specify a default theme for the preview.
-The default is the github theme.
+The default is the GitHub theme.
 
 ```vim
 let g:nvim_markdown_preview_theme = 'solarized-light'
 ```
-Set this variable to specificy the pandoc input format (--format/-f) option.
-The default is `gfm` (github flavoured markdown).
+Set this variable to specify the pandoc input format (--format/-f) option.
+The default is `gfm` (GitHub flavored markdown).
 
 ```vim
 let g:nvim_markdown_preview_format = 'markdown'
@@ -113,8 +113,7 @@ Take a look at `:help nvim-markdown-preview` for complete documentation and exam
 
 **Q:** Why doesn't the preview update in real-time while I type in vim?
 
-**A:** This plugin simply doesn't work like that. It is aimed to be "lightweigth" (if you already are a node.js/pandoc user that is).
-It simply provides some live update capabilities around what is essentially `:w !pandoc % -o /tmp/file.html`
+**A:** This plugin simply doesn't work like that. It only aims to provide some live update capabilities around what is essentially `:w !pandoc % -o /tmp/file.html`
 
 **Q:** I want the preview tab to open automatically without typing `:MarkdownPreview`
 
