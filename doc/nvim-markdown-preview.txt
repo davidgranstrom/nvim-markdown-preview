@@ -19,7 +19,7 @@ command again.
 
 COMMANDS                                      *nvim-markdown-preview-commands*
 
-There is only one command which is made avaiable when editing a file with a
+There is only one command which is made available when editing a file with a
 .md or .markdown extension.
 
                                                             *:MarkdownPreview*
@@ -45,14 +45,14 @@ In your vimrc
 CUSTOMIZATION                            *nvim-markdown-preview-customization*
 
 Set this variable in your vimrc to specify a default theme for the preview.
-The default is the github theme.
+The default is the GitHub theme.
 
 >
   let g:nvim_markdown_preview_theme = 'solarized-light'
 <
 
-Set this variable to specificy the pandoc input format (--format/-f) option.
-The default is `gfm` (github flavoured markdown).
+Set this variable to specify the pandoc input format (--format/-f) option.
+The default is `gfm` (Github flavored markdown).
 
 >
   let g:nvim_markdown_preview_format = 'markdown'
