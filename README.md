@@ -113,8 +113,7 @@ Take a look at `:help nvim-markdown-preview` for complete documentation and exam
 
 **Q:** Why doesn't the preview update in real-time while I type in vim?
 
-**A:** This plugin simply doesn't work like that. It is aimed to be "lightweight" (if you already are a node.js/pandoc user, you know what that is).
-It simply provides some live update capabilities around what is essential, using the following command, `:w !pandoc % -o /tmp/file.html`
+**A:** This plugin simply doesn't work like that. It only aims to provide some live update capabilities around what is essentially `:w !pandoc % -o /tmp/file.html`
 
 **Q:** I want the preview tab to open automatically without typing `:MarkdownPreview`
 
