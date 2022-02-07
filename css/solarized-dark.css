@@ -622,7 +622,6 @@ body table tr:nth-child(2n) {
 body img {
   max-width: 100%;
   box-sizing: content-box;
-  background-color: #fff;
 }
 
 body img[align=right] {
