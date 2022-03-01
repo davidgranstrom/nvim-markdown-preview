@@ -267,6 +267,7 @@ body table {
 body td,
 body th {
   padding: 0;
+  vertical-align: top;
 }
 
 body h1,
