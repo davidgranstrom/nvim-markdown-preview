@@ -16,6 +16,7 @@ function! s:Pandoc.generate(theme, restart) abort
   let stylesheet = s:css_path . a:theme . '.css'
   let highlight = s:highlight_path . a:theme . '.theme'
   let input_format = get(g:, 'nvim_markdown_preview_format', 'gfm')
+  let extra_args = get(g:, 'nvim_markdown_preview_extraargs', [])
 
   let self.server_index_path = s:output_path
   let self.server_root = fnamemodify(input_path, ':h')
@@ -36,7 +37,7 @@ function! s:Pandoc.generate(theme, restart) abort
           \ '--metadata',
           \ 'pagetitle='.filename,
           \ '--include-in-header='.l:stylesheet,
-          \ ],
+          \ ] + extra_args,
           \ self
           \ )
   endif
