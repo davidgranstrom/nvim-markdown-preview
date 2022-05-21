@@ -55,13 +55,10 @@ For other systems please see the links in the description on how to install.
 
 Assuming you have [Node.js](https://nodejs.org/en/download/) installed:
 ```
-npm install -g live-server
+npm install -g @compodoc/live-server
 ```
 
-or if you prefer yarn
-```
-yarn global add live-server
-```
+See this [issue](https://github.com/davidgranstrom/nvim-markdown-preview/issues/15) on why the live-server fork is preferred.
 
 ## Installation
 
