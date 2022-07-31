@@ -59,12 +59,13 @@ function! s:LiveServer.start(root, index_path)
   if !exists('self.pid')
     let mount_path = fnamemodify(a:index_path, ':h')
     let index = fnamemodify(a:index_path, ':t')
+    let extra_opts = get(g:, 'nvim_markdown_preview_liveserver_extra_args', [])
     let self.pid = jobstart([
           \ 'live-server',
           \ '--quiet',
           \ '--mount='.'/:'.mount_path,
           \ '--open='.index,
-          \ ],
+          \ ] + extra_opts + [a:root],
           \ self,
           \ )
   endif

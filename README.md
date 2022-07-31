@@ -1,6 +1,6 @@
 # nvim-markdown-preview
 
-Markdown preview in the browser using [pandoc](https://pandoc.org/) and [live-server](https://github.com/tapio/live-server) through Neovim's [job-control API](https://neovim.io/doc/user/job_control.html).
+Markdown preview in the browser using [pandoc](https://pandoc.org/) and [live-server](https://github.com/compodoc/live-server) through Neovim's [job-control API](https://neovim.io/doc/user/job_control.html).
 
 ## Usage
 
