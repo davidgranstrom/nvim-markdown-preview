@@ -58,4 +58,11 @@ The default is `gfm` (Github flavored markdown).
   let g:nvim_markdown_preview_format = 'markdown'
 <
 
+Set this variable to pass any additional options to live-server.
+
+>
+  let g:nvim_markdown_preview_liveserver_extra_args =
+      \ ['--browser=librewolf', '--port=9999']
+<
+
  vim:tw=78:et:ft=help:norl:
