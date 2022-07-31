@@ -6,7 +6,7 @@ License: GPL3
 INTRODUCTION                                           *nvim-markdown-preview*
 
 Markdown preview in the browser using pandoc (https://pandoc.org/) and
-live-server (https://github.com/tapio/live-server) through Neovim's
+live-server (https://github.com/compdoc/live-server) through Neovim's
 |job-control| API.
 
 
