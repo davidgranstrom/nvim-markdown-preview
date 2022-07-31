@@ -65,7 +65,7 @@ function! s:LiveServer.start(root, index_path)
           \ '--quiet',
           \ '--mount='.'/:'.mount_path,
           \ '--open='.index,
-          \ ] + extra_opts,
+          \ ] + extra_opts + [a:root],
           \ self,
           \ )
   endif
