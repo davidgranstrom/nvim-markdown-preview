@@ -8,20 +8,20 @@ Open a markdown file in vim and run `:MarkdownPreview`. The preview opens in a n
 
 ## Features
 
-* Asynchronous
-* Produces "standalone" html files (injected css)
-* Custom themes (`github`, `solarized-dark`, `solarized-light`)
-* Auto-reloads browser tab on save
-* Serves assets from the current working directory (embed pictures in your markdown etc.)
-* Custom markdown input formats
+- Asynchronous
+- Produces "standalone" html files (injected css)
+- Custom themes (`github`, `solarized-dark`, `solarized-light`)
+- Auto-reloads browser tab on save
+- Serves assets from the current working directory (embed pictures in your markdown etc.)
+- Custom markdown input formats
   - [pandoc markdown](https://pandoc.org/MANUAL.html#pandocs-markdown)
-* [KaTeX](https://katex.org/) for formatting LaTeX math
-* Syntax highlighting from the [Kate Editor themes](https://github.com/KDE/syntax-highlighting#color-theme-files)
+- [KaTeX](https://katex.org/) for formatting LaTeX math
+- Syntax highlighting from the [Kate Editor themes](https://github.com/KDE/syntax-highlighting#color-theme-files)
 
 ## Requirements
 
-* `pandoc`
-* `live-server` (Node.js)
+- `pandoc`
+- `live-server` (Node.js)
 
 `pandoc` and `live-server` executables should be installed and accessible in your `$PATH`.
 
@@ -37,9 +37,9 @@ brew install pandoc
 
 For [Linux](https://pandoc.org/installing.html#linux):
 
-* Ubuntu `sudo apt install pandoc`
+- Ubuntu `sudo apt install pandoc`
 
-* Fedora `sudo dnf install pandoc`
+- Fedora `sudo dnf install pandoc`
 
 For [Windows](https://pandoc.org/installing.html#windows):
 
@@ -54,6 +54,7 @@ For other systems please see the links in the description on how to install.
 ### live-server
 
 Assuming you have [Node.js](https://nodejs.org/en/download/) installed:
+
 ```
 npm install -g @compodoc/live-server
 ```
@@ -93,6 +94,7 @@ The default is the GitHub theme.
 ```vim
 let g:nvim_markdown_preview_theme = 'solarized-light'
 ```
+
 Set this variable to specify the pandoc input format (--format/-f) option.
 The default is `gfm` (GitHub flavored markdown).
 
@@ -104,7 +106,15 @@ Take a look at `:help nvim-markdown-preview` for complete documentation and exam
 
 ## Screenshots
 
-![](./screenshots/grid.png)
+Theme: _Github_ (Default)
+
+![](./screenshots/github_theme.png)
+Theme: _Solarized Light_
+
+![](./screenshots/solarized_light_theme.png)
+Theme: _Solarized Dark_
+
+![](./screenshots/solarized_dark_theme.png)
 
 ## Q & A
 
@@ -115,11 +125,13 @@ Take a look at `:help nvim-markdown-preview` for complete documentation and exam
 **Q:** I want the preview tab to open automatically without typing `:MarkdownPreview`
 
 **A:** Sure, use an `autocmd` like:
+
 ```
 autocmd FileType markdown MarkdownPreview
 ```
 
 Or the `<Plug>` mapping to bind it to the key of your choice
+
 ```
 nmap <cr> <plug>(nvim-markdown-preview)
 ```
